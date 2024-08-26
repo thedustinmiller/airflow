@@ -40,11 +40,11 @@ Only ``pip`` installation is currently officially supported.
   the problem in `this PR <https://github.com/bazelbuild/rules_python/pull/1166>`_ so it might be that
   newer versions of ``bazel`` will handle it.
 
-Typical command to install airflow from scratch in a reproducible way from PyPI looks like below:
+Typical command to install airflow from scratch in a reproducible way from PyPI looks like below. Note that the needed constraints file is determined both by the Airflow version and environment's Python version:
 
 .. code-block:: bash
 
-    pip install "apache-airflow[celery]==|version|" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-|version|/constraints-3.8.txt"
+    pip install "apache-airflow[celery]==|version|" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
 
 
 Typically, you can add other dependencies and providers as separate command after the reproducible
